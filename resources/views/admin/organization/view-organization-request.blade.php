@@ -18,9 +18,9 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#basic_info" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>
                     <a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Admin</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Branches</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Other Details</a>
+                    <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="#nav-admin" role="tab" aria-controls="nav-admin" aria-selected="false">Admin</a>
+                    <a class="nav-item nav-link" id="nav-braches-tab" data-toggle="tab" href="#nav-braches" role="tab" aria-controls="nav-braches" aria-selected="false">Branches</a>
+                    <a class="nav-item nav-link" id="nav-other-details-tab" data-toggle="tab" href="#nav-other-details" role="tab" aria-controls="nav-other-details" aria-selected="false">Other Details</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -135,8 +135,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, porro culpa odit fuga in quia neque quae accusamus sint, totam tenetur sit rerum mollitia! Assumenda vitae ad expedita modi voluptatum.</h1>
+                <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="mt-4">
+                                <label for="oa">Organization Admin</label>
+                                <input type="text" class="form-control" id="oa" name="organization_admin" placeholder="Organization Admin">
+                            </div>
+                            <div class="mt-4">
+                                <label for="email">Email ID</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email ID">
+                            </div>
+                            <div class="mt-4">
+                                <label for="ur">User Role</label>
+                                <select name="user_role" id="ur" class="form-control">
+                                    <option value="oa">Organization Admin</option>
+                                    <option value="om">Organization Moderator</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="m-auto">
+                                <p>Avatar</p>
+                                {{-- <img src="{{ asset('admin/img/user-avatar.png') }}" height="100" width="100" style="border-radius: 50%" id="avatar" alt=""> --}}
+                                <div>
+                                <input type="file" id="upload" hidden />
+                                    <label class="imgUp" for="upload">Upload</label>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label for="d">Designation</label>
+                                <input type="text" class="form-control" id="d" name="degination" placeholder="Desgination">
+                            </div>
+                            <div class="mt-4">
+                                <label for="pn">Phone Number</label>
+                                <input type="text" class="form-control" id="pn" name="phone_number" placeholder="+94 4930 493020">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
          </div>

@@ -15,6 +15,6 @@ class OrganizationController extends Controller
         return view('admin.organization.organization-request-list');
     }
     public function requestView(){
-        return view('admin.organization.view-organization');
+        return view('admin.organization.view-organization-request');
     }
 }

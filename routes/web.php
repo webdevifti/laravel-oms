@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['registration' => false]);
+Auth::routes(['register' => false]);
 Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/admin/organization/list', [OrganizationController::class, 'organization'])->name('organization.list');
