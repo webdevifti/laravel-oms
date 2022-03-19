@@ -4,9 +4,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">View Organization List</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-plus fa-sm text-white-50"></i> Add New</a>
+        <h1 class="h3 mb-0 text-gray-800">View Organization Request List</h1>
+        {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-plus fa-sm text-white-50"></i> Add New</a> --}}
     </div>
      <!-- Page Heading -->
    
@@ -19,7 +19,7 @@
                     <a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#basic_info" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>
                     <a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>
                     <a class="nav-item nav-link" id="nav-admin-tab" data-toggle="tab" href="#nav-admin" role="tab" aria-controls="nav-admin" aria-selected="false">Admin</a>
-                    <a class="nav-item nav-link" id="nav-braches-tab" data-toggle="tab" href="#nav-braches" role="tab" aria-controls="nav-braches" aria-selected="false">Branches</a>
+                    <a class="nav-item nav-link" id="nav-branches-tab" data-toggle="tab" href="#nav-branches" role="tab" aria-controls="nav-branches" aria-selected="false">Branches</a>
                     <a class="nav-item nav-link" id="nav-other-details-tab" data-toggle="tab" href="#nav-other-details" role="tab" aria-controls="nav-other-details" aria-selected="false">Other Details</a>
                 </div>
             </nav>
@@ -64,10 +64,9 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="m-auto" style="width: 350px;">
                                 <p>Organization Logo</p>
-                                <img src="{{ asset('admin/img/placeholder.png') }}" height="170" width="100%" id="pic" alt="">
+                                {{-- <img src="{{ asset('admin/img/placeholder.png') }}" height="170" width="100%" id="pic" alt=""> --}}
                                 <div>
-                                <input type="file" id="upload" hidden oninput="pic.src=window.URL.createObjectURL(this.files[0])" />
-                                    <label class="imgUp" for="upload">Upload</label>
+                                <input type="file" name="logo" />
                                 </div>
                             </div>
 
@@ -159,8 +158,7 @@
                                 <p>Avatar</p>
                                 {{-- <img src="{{ asset('admin/img/user-avatar.png') }}" height="100" width="100" style="border-radius: 50%" id="avatar" alt=""> --}}
                                 <div>
-                                <input type="file" id="upload" hidden />
-                                    <label class="imgUp" for="upload">Upload</label>
+                                <input type="file" name="avatar" />
                                 </div>
                             </div>
                             <div class="mt-4">
@@ -172,6 +170,73 @@
                                 <input type="text" class="form-control" id="pn" name="phone_number" placeholder="+94 4930 493020">
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-branches" role="tabpanel" aria-labelledby="nav-branches-tab">
+                    <div class="card shadow mb-4 mt-4">
+                        <div class="card-header">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Organization A</h1>
+                                <a href="{{ route('admin.branch') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    class="fas fa-plus fa-sm text-white-50"></i> Add New</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                            <td>
+                                               <input type="checkbox" checked data-toggle="toggle"  data-on="Active" data-off="Deactive" data-onstyle="success" data-offstyle="danger">
+                                           </td>
+                                           <td>
+                                               <a href="#" class="btn btn-success"> <i class="fas fa-pen fa-fw"></i></a>
+                                               <a href="#" class="btn btn-danger"> <i class="fas fa-trash fa-fw"></i></a>
+                                           </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-other-details" role="tabpanel" aria-labelledby="nav-other-details-tab">
+                    <div class="mt-4">
+                        <label for="">Default Language</label>
+                        <select name="language" id="" class="form-control">
+                            <option value="">Arabic</option>
+                            <option value="">English</option>
+                        </select>
                     </div>
                 </div>
             </div>
