@@ -39,6 +39,9 @@ class PackageModeController extends Controller
         PackageMode::find($request->mode_id)->update([
             'status' => $request->status
         ]);
-        
+    }
+    public function delete($id){
+        PackageMode::find($id)->delete();
+        return back()->with('delete','Package mode deleted successfully');
     }
 }

@@ -8,6 +8,11 @@
         <a href="{{ route('package.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add New</a>
     </div>
+    @if(session()->has('delete'))
+        <div class="alert alert-success">
+            {{ session()->get('delete') }}
+        </div>
+    @endif
      <!-- Page Heading -->
    
      <!-- DataTales Example -->
@@ -50,8 +55,9 @@
                                  <input data-id={{ $package->id }} class="toggle-class" type="checkbox" data-onstyle="success" data-toggle="toggle" data-offstyle="danger" data-on="Active" data-off="Inactive" {{ $package->status ? 'checked':'' }}>
                              </td>
                             <td>
+                                
                                 <a href="#" class="btn btn-success"> <i class="fas fa-pen fa-fw"></i></a>
-                                <a href="#" class="btn btn-danger"> <i class="fas fa-trash fa-fw"></i></a>
+                                <a href="{{ route('package.delete', $package->id) }}" onclick="return confirm('Are You Sure?')" class="btn btn-danger"> <i class="fas fa-trash fa-fw"></i></a>
                             </td>
                          </tr>
                          @endforeach

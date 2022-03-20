@@ -36,11 +36,14 @@ Route::get('/admin/package/list', [PackageController::class, 'index'])->name('pa
 Route::get('/admin/package/add', [PackageController::class, 'create'])->name('package.create');
 Route::post('/admin/package/store', [PackageController::class, 'store'])->name('package.store');
 Route::get('/admin/package/statuschanege', [PackageController::class, 'statusChange']);
+Route::get('/admin/package/delete/{id}', [PackageController::class, 'delete'])->name('package.delete');
 
 Route::get('/admin/package/mode', [PackageModeController::class, 'mode'])->name('package.mode');
 Route::post('/admin/package/mode/create', [PackageModeController::class, 'createMode'])->name('admin.package.mode.create');
 Route::get('/admin/package/mode/statuschanege', [PackageModeController::class, 'statusChange']);
+Route::get('/admin/package/mode/delete/{id}', [PackageModeController::class, 'delete'])->name('package.mode.delete');
 
 Route::get('/admin/package/feature', [PackageFeatureController::class, 'index'])->name('package.feature');
 Route::post('/admin/package/feature/create', [PackageFeatureController::class, 'create'])->name('package.feature.create');
 Route::get('/admin/package/feature/statuschanege', [PackageFeatureController::class, 'statusChange']);
+Route::get('/admin/package/feature/delete/{id}', [PackageFeatureController::class, 'delete'])->name('package.feature.delete');

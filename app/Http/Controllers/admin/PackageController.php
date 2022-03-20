@@ -61,6 +61,9 @@ class PackageController extends Controller
         Package::find($request->package_id)->update([
             'status' => $request->status
         ]);
-        
+    }
+    public function delete($id){
+        Package::find($id)->delete();
+        return back()->with('delete','Package deleted successfully');
     }
 }
