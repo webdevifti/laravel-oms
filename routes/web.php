@@ -35,9 +35,12 @@ Route::get('/admin/branch/add', [BranchController::class, 'index'])->name('admin
 Route::get('/admin/package/list', [PackageController::class, 'index'])->name('package.list');
 Route::get('/admin/package/add', [PackageController::class, 'create'])->name('package.create');
 Route::post('/admin/package/store', [PackageController::class, 'store'])->name('package.store');
+Route::get('/admin/package/statuschanege', [PackageController::class, 'statusChange']);
 
 Route::get('/admin/package/mode', [PackageModeController::class, 'mode'])->name('package.mode');
 Route::post('/admin/package/mode/create', [PackageModeController::class, 'createMode'])->name('admin.package.mode.create');
+Route::get('/admin/package/mode/statuschanege', [PackageModeController::class, 'statusChange']);
 
 Route::get('/admin/package/feature', [PackageFeatureController::class, 'index'])->name('package.feature');
 Route::post('/admin/package/feature/create', [PackageFeatureController::class, 'create'])->name('package.feature.create');
+Route::get('/admin/package/feature/statuschanege', [PackageFeatureController::class, 'statusChange']);

@@ -56,4 +56,11 @@ class PackageController extends Controller
 
         }
     }
+
+    public function statusChange(Request $request){
+        Package::find($request->package_id)->update([
+            'status' => $request->status
+        ]);
+        
+    }
 }

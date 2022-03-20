@@ -347,6 +347,7 @@
         });
     </script>
 
+    @yield('footer_script')
 </body>
 
 </html>

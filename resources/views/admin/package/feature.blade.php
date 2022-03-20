@@ -74,11 +74,7 @@
                              <td>{{ $feature->package_features }}</td>
                              <td>{{ $feature->created_at->diffForHumans() }}</td>
                              <td>
-                                 @if($feature->status == 1)
-                                    <input type="checkbox" checked data-toggle="toggle"  data-on="Active" data-off="Deactive" data-onstyle="success" data-offstyle="danger">
-                                @else 
-                                    <input type="checkbox" checked data-toggle="toggle"  data-on="Deactive" data-off="Active" data-onstyle="danger" data-offstyle="success">
-                                @endif
+                                <input data-id={{ $feature->id }} class="toggle-class" type="checkbox" data-onstyle="success" data-toggle="toggle" data-offstyle="danger" data-on="Active" data-off="Inactive" {{ $feature->status ? 'checked':'' }}>
                             </td>
                             <td>
                                 <a href="#" class="btn btn-success"> <i class="fas fa-pen fa-fw"></i></a>
@@ -94,4 +90,25 @@
 
    
 </div>
+@endsection
+@section('footer_script')
+<script>
+  
+   $(function(){
+       $('.toggle-class').on('change', function(){
+           var status = $(this).prop('checked') == true ? 1:0;
+           var feature_id = $(this).data('id');
+
+           $.ajax({
+               type: 'GET',
+               dataType: 'json',
+               url: '/admin/package/feature/statuschanege',
+               data:{'status':status,'feature_id': feature_id},
+               success: function(data){
+                   console.log(data.success);
+               }
+           })
+       })
+   })
+</script>
 @endsection

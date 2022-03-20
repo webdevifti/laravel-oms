@@ -35,4 +35,10 @@ class PackageModeController extends Controller
             return back()->with('not_inserted','Something happened wrong');
         }
     }
+    public function statusChange(Request $request){
+        PackageMode::find($request->mode_id)->update([
+            'status' => $request->status
+        ]);
+        
+    }
 }

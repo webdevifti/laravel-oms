@@ -28,4 +28,10 @@ class PackageFeatureController extends Controller
             return back()->with('not_inserted','Something happened wrong');
         }
     }
+    public function statusChange(Request $request){
+        PackageFeature::find($request->feature_id)->update([
+            'status' => $request->status
+        ]);
+        
+    }
 }
