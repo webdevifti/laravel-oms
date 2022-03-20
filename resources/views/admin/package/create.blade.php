@@ -11,6 +11,8 @@
      <!-- Page Heading -->
    
      <!-- DataTales Example -->
+     <form action="{{ route('package.store') }}" method="POST">
+         @csrf
      <div class="card shadow mb-4">
          <div class="card-body">
             <div class="row">
@@ -22,19 +24,23 @@
                     <div class="mt-4">
                         <label for="">Package Mode</label>
                         <select name="package_mode" class="form-control">
-                            <option value="">a</option>
-                            <option value="">a</option>
+                            <option value="">--select mode--</option>
+                            @foreach($active_modes as $mode)
+                                <option value="{{ $mode->id }}">{{ $mode->package_mode }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-4">
                         <label for="">Number od user</label>
-                        <input type="text" name="nou" placeholder="User Number" class="form-control">
+                        <input type="text" name="number_of_user" placeholder="User Number" class="form-control">
                     </div>
                     <div class="mt-4">
                         <label for="">Package Features</label>
-                        <select name="package_features" class="form-control">
-                            <option value="">a</option>
-                            <option value="">a</option>
+                        <select name="package_features[]" id="langOpt" multiple class="form-control">
+                            <option value="">--select features--</option>
+                            @foreach($active_features as $feature)
+                                <option value="{{ $feature->id }}">{{ $feature->package_features }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -68,12 +74,13 @@
             <div class="card-footer d-sm-flex align-items-center justify-content-between">
                 <p style="visibility: hidden">test</p>
                 <div class="action_buttons d-none d-sm-inline-block">
-                    <a href="" class="btn btn-danger btn-sm">Cancel</a>
-                    <a href="" class="btn btn-success btn-sm">Save</a>
+                    <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm">Save</button>
                 </div>
             </div>
          </div>
      </div>
+    </form>
 
    
 </div>
