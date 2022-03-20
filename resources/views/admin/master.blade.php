@@ -86,10 +86,11 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Packages Management</span>
                 </a>
-                <div id="collapseTwo" class="collapse {{ (request()->is('admin/packages/list')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse {{ (request()->is('admin/package/list') || request()->is('admin/package/mode') || request()->is('admin/package/feature')) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        
-                        <a class="collapse-item {{ (request()->is('admin/packages/list')) ? 'active' : '' }}" href="{{ route('package.list') }}">Package List</a>
+                        <a class="collapse-item {{ (request()->is('admin/package/list')) ? 'active' : '' }}" href="{{ route('package.list') }}">Package List</a>
+                        <a class="collapse-item {{ (request()->is('admin/package/mode')) ? 'active' : '' }}" href="{{ route('package.mode') }}">Package Mode</a>
+                        <a class="collapse-item {{ (request()->is('admin/package/feature')) ? 'active' : '' }}" href="{{ route('package.feature') }}">Package Features</a>
                        
                     </div>
                 </div>

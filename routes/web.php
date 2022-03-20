@@ -4,6 +4,8 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\BranchController;
 use App\Http\Controllers\admin\OrganizationController;
 use App\Http\Controllers\admin\PackageController;
+use App\Http\Controllers\admin\PackageFeatureController;
+use App\Http\Controllers\admin\PackageModeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +33,7 @@ Route::get('/admin/organization/request/view', [OrganizationController::class, '
 Route::get('/admin/branch/add', [BranchController::class, 'index'])->name('admin.branch');
 Route::get('/admin/packages/list', [PackageController::class, 'index'])->name('package.list');
 Route::get('/admin/package/add', [PackageController::class, 'create'])->name('package.create');
-Route::get('/admin/package/mode', [PackageController::class, 'mode'])->name('package.mode');
+Route::get('/admin/package/mode', [PackageModeController::class, 'mode'])->name('package.mode');
+Route::post('/admin/package/mode/create', [PackageModeController::class, 'createMode'])->name('admin.package.mode.create');
+Route::get('/admin/package/feature', [PackageFeatureController::class, 'index'])->name('package.feature');
+Route::post('/admin/package/feature/create', [PackageFeatureController::class, 'create'])->name('package.feature.create');

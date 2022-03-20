@@ -4,51 +4,42 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">View Package Mode</h1>
+        <h1 class="h3 mb-0 text-gray-800">View Package Features</h1>
         @if(session()->has('inserted'))
             <div class="alert alert-success">
                 {{ session()->get('inserted') }}
             </div>
         @endif
         @if(session()->has('not_inserted'))
-        <div class="alert alert-danger">
-            {{ session()->get('not_inserted') }}
-        </div>
-    @endif
+            <div class="alert alert-danger">
+                {{ session()->get('not_inserted') }}
+            </div>
+        @endif
         {{-- <a href="{{ route('package.list') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add New</a> --}}
     </div>
      <!-- Page Heading -->
    
-    <form action="{{ route('admin.package.mode.create') }}" method="POST">
+    <form action="{{ route('package.feature.create') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="mt-4">
-                    <label for="">Package Mode</label>
-                    <input type="text" placeholder="Package mode" name="package_mode" class="form-control">
-                    <span style="color: red">@error('package_mode') {{ $message }} @enderror</span>
+                    <label for="">Package Feature</label>
+                    <input type="text" placeholder="Package Feature" name="package_feature" class="form-control">
+                    <span style="color: red">@error('package_feature') {{ $message }} @enderror</span>
                 </div>
-                <div class="mt-4">
-                    <label for="">No Of Days</label>
-                    <input type="text" placeholder="No of Days" name="no_of_days" class="form-control">
-                    <span style="color: red">@error('no_of_days') {{ $message }} @enderror</span>
-                </div>
+             
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="mt-4">
-                    <label for="">Package Description</label>
-                    <input type="text" placeholder="Package mode description" name="package_mode_desc" class="form-control">
-                    <span style="color: red">@error('package_mode_desc') {{ $message }} @enderror</span>
-                </div>
-                <div class="mt-4">
                     <label for="">Status</label>
-                    <select name="mode_status" class="form-control" id="">
+                    <select name="status" class="form-control" id="">
                         <option value="">Select Status</option>
                         <option value="1">Active</option>
                         <option value="0">Deactive</option>
                     </select>
-                    <span style="color: red">@error('mode_status') {{ $message }} @enderror</span>
+                    <span style="color: red">@error('status') {{ $message }} @enderror</span>
                 </div>
             </div>
         </div>
@@ -63,9 +54,7 @@
                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                      <thead>
                          <tr>
-                             <th>Package Mode</th>
-                             <th>Mode Description</th>
-                             <th>No Of Days</th>
+                             <th>Package Features</th>
                              <th>Created On</th>
                              <th>Status</th>
                              <th>Action</th>
@@ -73,23 +62,19 @@
                      </thead>
                      <tfoot>
                          <tr>
-                            <th>Package Mode</th>
-                            <th>Mode Description</th>
-                            <th>No Of Days</th>
+                            <th>Package Features</th>
                             <th>Created On</th>
                             <th>Status</th>
                             <th>Action</th>
                          </tr>
                      </tfoot>
                      <tbody>
-                         @foreach($modes as $mode)
+                         @foreach($features as $feature)
                          <tr>
-                             <td>{{ $mode->package_mode }}</td>
-                             <td>{{ $mode->package_mode_desc }}</td>
-                             <td>{{ $mode->no_of_days }}</td>
-                             <td>{{ $mode->created_at->diffForHumans() }}</td>
+                             <td>{{ $feature->package_features }}</td>
+                             <td>{{ $feature->created_at->diffForHumans() }}</td>
                              <td>
-                                 @if($mode->status == 1)
+                                 @if($feature->status == 1)
                                     <input type="checkbox" checked data-toggle="toggle"  data-on="Active" data-off="Deactive" data-onstyle="success" data-offstyle="danger">
                                 @else 
                                     <input type="checkbox" checked data-toggle="toggle"  data-on="Deactive" data-off="Active" data-onstyle="danger" data-offstyle="success">
