@@ -14,8 +14,10 @@ class PackageController extends Controller
 {
     //
     public function index(){
+        $active_modes = PackageMode::where('status',1)->get();
+        $active_features = PackageAttr::all();
         $packages = Package::orderBy('created_at', 'DESC')->get();
-        return view('admin.package.index', compact('packages'));
+        return view('admin.package.index', compact('packages','active_modes','active_features'));
     }
     public function create(){
         $active_modes = PackageMode::where('status',1)->get();
@@ -65,5 +67,9 @@ class PackageController extends Controller
     public function delete($id){
         Package::find($id)->delete();
         return back()->with('delete','Package deleted successfully');
+    }
+
+    public function update(Request $request){
+        dd($request->all());
     }
 }

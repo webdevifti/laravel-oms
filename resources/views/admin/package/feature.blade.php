@@ -91,31 +91,31 @@
                                 <a href="{{ route('package.feature.delete', $feature->id) }}" onclick="return confirm('Are You Sure?')"  class="btn btn-danger"> <i class="fas fa-trash fa-fw"></i></a>
                             </td>
                          </tr>
-                         <div class="modal fade" id="logoutModal_{{ $feature->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                         <div class="modal-dialog" role="document">
-                             <div class="modal-content">
-                                 <div class="modal-header">
-                                     <h5 class="modal-title" id="exampleModalLabel">Edit the Feature</h5>
-                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                         <span aria-hidden="true">×</span>
-                                     </button>
-                                 </div>
-                                 <div class="modal-body">
-                                     <form action="{{ route('package.feature.update', $feature->id) }}" method="POST">
-                                         @csrf
-                                         <input type="hidden" value="{{ $feature->id }}" name="id">
-                                         <div class="mt-4">
-                                            <input class="form-control" name="feature" type="text" value="{{ $feature->package_features }}" required>
-                                         </dfiv>
-                                         <div class="mt-4">
-                                             <button type="submit" class="btn btn-success">Update</button>
-                                         </div>
-                                     </form>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
+                                <div class="modal fade" id="logoutModal_{{ $feature->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit the Feature</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('package.feature.update', $feature->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value="{{ $feature->id }}" name="id">
+                                                <div class="mt-4">
+                                                    <input class="form-control" name="feature" type="text" value="{{ $feature->package_features }}" required>
+                                                </dfiv>
+                                                <div class="mt-4">
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                          @endforeach
                      </tbody>
                  </table>
