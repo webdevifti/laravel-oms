@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Package;
+use App\Models\PackageAttr;
 use App\Models\PackageFeature;
 use App\Models\PackageMode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
     //
     public function index(){
-       
-        return view('admin.package.index');
+        $packages = Package::orderBy('created_at', 'DESC')->get();
+        return view('admin.package.index', compact('packages'));
     }
     public function create(){
         $active_modes = PackageMode::where('status',1)->get();
@@ -20,17 +23,37 @@ class PackageController extends Controller
         return view('admin.package.create', compact('active_modes','active_features'));
     }
     public function store(Request $request){
+        // dd($request->all());
         $request->validate([
             'package_title' => 'required',
             'package_mode' => 'required',
             'number_of_user' => 'required',
             'package_features' => 'required',
-            'package_sub_title' => 'required',
             'price' => 'required',
-            'bill' => 'required',
             'status' => 'required'
         ]);
-        $
+        $insert_id = Package::insertGetId([
+            'package_title' => $request->package_title,
+            'package_sub_title' => $request->package_sub_title,
+            'mode_id' => $request->package_mode,
+            'price' => $request->price,
+            'number_of_user' => $request->number_of_user,
+            'billed' => $request->bill,
+            'status' => $request->status,
+            'created_at' => Carbon::now()
+        ]);
+
+        foreach($request->package_features as $fid){
+            $pst = PackageAttr::create([
+                'package_id' => $insert_id,
+                'package_feature_id' => $fid
+            ]);
+        }
+        if($insert_id && $pst){
+            return back()->with('inserted','Package has been added successfully');
+        }else{
+            return back()->with('not_inserted','Something Happened Wrong');
+
+        }
     }
- 
 }
