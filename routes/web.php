@@ -40,10 +40,12 @@ Route::get('/admin/package/delete/{id}', [PackageController::class, 'delete'])->
 
 Route::get('/admin/package/mode', [PackageModeController::class, 'mode'])->name('package.mode');
 Route::post('/admin/package/mode/create', [PackageModeController::class, 'createMode'])->name('admin.package.mode.create');
+Route::post('/admin/package/mode/edit', [PackageModeController::class, 'update'])->name('package.mode.update');
 Route::get('/admin/package/mode/statuschanege', [PackageModeController::class, 'statusChange']);
 Route::get('/admin/package/mode/delete/{id}', [PackageModeController::class, 'delete'])->name('package.mode.delete');
 
 Route::get('/admin/package/feature', [PackageFeatureController::class, 'index'])->name('package.feature');
 Route::post('/admin/package/feature/create', [PackageFeatureController::class, 'create'])->name('package.feature.create');
+Route::post('/admin/package/feature/edit', [PackageFeatureController::class, 'update'])->name('package.feature.update');
 Route::get('/admin/package/feature/statuschanege', [PackageFeatureController::class, 'statusChange']);
 Route::get('/admin/package/feature/delete/{id}', [PackageFeatureController::class, 'delete'])->name('package.feature.delete');

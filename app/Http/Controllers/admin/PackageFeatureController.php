@@ -37,4 +37,11 @@ class PackageFeatureController extends Controller
         PackageFeature::find($id)->delete();
         return back()->with('delete','Package feature deleted successfully');
     }
+
+    public function update(Request $request){
+        PackageFeature::find($request->id)->update([
+            'package_features' => $request->feature
+        ]);
+        return back()->with('updated','Package feature updated successfully');
+    }
 }
