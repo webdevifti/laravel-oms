@@ -9,15 +9,15 @@ use App\Models\PackageFeature;
 use App\Models\PackageMode;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PackageController extends Controller
 {
     //
     public function index(){
         $active_modes = PackageMode::where('status',1)->get();
-        $active_features = PackageAttr::all();
         $packages = Package::orderBy('created_at', 'DESC')->get();
-        return view('admin.package.index', compact('packages','active_modes','active_features'));
+        return view('admin.package.index', compact('packages','active_modes'));
     }
     public function create(){
         $active_modes = PackageMode::where('status',1)->get();

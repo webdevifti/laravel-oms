@@ -103,13 +103,11 @@
                                                     <div class="mt-4">
                                                         <label for="">Package Features *</label>
                                                         <select name="package_features[]" id="langOpt" multiple class="form-control">
-                                                          
+                                                          @php
+                                                              $active_features = \App\Models\PackageAttr::where('package_id',$package->id)->get();
+                                                          @endphp
                                                             @foreach($active_features as $feature)
-                                                            @if($feature->package_id == $package->id)
-                                                            
-                                                                <option value="{{ $feature->id }}">{{ $feature->rel_with_packagefeature->id }}</option>
-                                                               
-                                                                @endif
+                                                                <option selected value="{{ $feature->id }}">{{ $feature->rel_with_packagefeature->package_features }}</option>
                                                             @endforeach
                                                         </select>
                                                        
@@ -140,8 +138,13 @@
                                                     <div class="mt-4">
                                                         <label for="">Status</label>
                                                         <select name="status" class="form-control">
-                                                            <option value="1">Active</option>
+                                                            @if($package->status == 1)
+                                                            <option selected value="1">Active</option>
                                                             <option value="0">Deactive</option>
+                                                            @else
+                                                            <option value="1">Active</option>
+                                                            <option selected value="0">Deactive</option>
+                                                            @endif
                                                         </select>
                                                     </div>
                                                 </div>
