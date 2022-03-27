@@ -70,7 +70,27 @@ class PackageController extends Controller
     }
 
     public function update(Request $request){
-        dd($request->all());
+        $package = Package::find($request->id);
+        $package->package_title =  $request->package_title;
+        $package->package_sub_title = $request->package_sub_title;
+        $package->mode_id = $request->package_mode;
+        $package->price = $request->price;
+        $package->number_of_user = $request->number_of_user;
+        $package->billed = $request->bill;
+        $package->status = $request->status;
+        foreach($request->package_features as $fid){
+            $pst = PackageAttr::find($request->id)->update([
+                'package_feature_id' => $fid
+            ]);
+        }
+        $updated = $package->save();
+        if($updated){
+            return back()->with('updated','Package updated successfully.');
+        }else{
+            return back()->with('not_updated','Something wrong.');
+
+        }
+        
         
     }
 }

@@ -13,6 +13,16 @@
             {{ session()->get('delete') }}
         </div>
     @endif
+    @if(session()->has('updated'))
+        <div class="alert alert-success">
+            {{ session()->get('updated') }}
+        </div>
+    @endif
+    @if(session()->has('not_updated'))
+    <div class="alert alert-danger">
+        {{ session()->get('not_updated') }}
+    </div>
+    @endif
      <!-- Page Heading -->
    
      <!-- DataTales Example -->
@@ -108,7 +118,7 @@
                                                              
                                                           @endphp
                                                             @foreach($active_features as $feature)
-                                                                <option selected value="{{ $feature->id }}">{{ $feature->rel_with_packagefeature->package_features }}</option>
+                                                                <option value="{{ $feature->id }}">{{ $feature->id }}</option>
                                                             @endforeach
                                                         </select>
                                                        
