@@ -105,6 +105,7 @@
                                                         <select name="package_features[]" id="langOpt" multiple class="form-control">
                                                           @php
                                                               $active_features = \App\Models\PackageAttr::where('package_id',$package->id)->get();
+                                                             
                                                           @endphp
                                                             @foreach($active_features as $feature)
                                                                 <option selected value="{{ $feature->id }}">{{ $feature->rel_with_packagefeature->package_features }}</option>
